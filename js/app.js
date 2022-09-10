@@ -5,7 +5,6 @@
 // ---------------------------- Variables (state) ----------------------
 //turn, board, winner, init war, round, points
 let deck = []
-
 let cardToRemove
 //remove top card
 
@@ -47,6 +46,8 @@ function getDeck()
     
 
 
+
+
 // function playGame() {
 //    //listen to user input via click
 // }
@@ -57,11 +58,24 @@ function getDeck()
 
 // }
 
-function handleClick(evt) {
-    //click button to draw top card
-    //add button to init war
+function handleClick() {
+
+	// Used to prevent error on click when no cards are left in deck 1
+    if (deck.length > 0) {  
+
+	  // Randomly select number from total cards remaining
+		let randIdx = Math.floor(Math.random()*deck.length)
+
+		// Assigns card with the random index to a variable   
+	let cardPicked = deck.splice(randIdx, 1)[0]
+
+	//   // Adds card picked to deck 2
+	// 	deck2.push(cardPicked) 
+
+	  // Pass card picked to render function to display
+		render(cardPicked)
     }
-// }
+}
 
 // function getWinner() {
     //winner has all 52 cards
