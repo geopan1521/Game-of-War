@@ -45,7 +45,36 @@ function getDeck()
 }
     
 
+function render(cardPicked) {
 
+    // Removes outline class when first card is picked
+    if (deck.length === 1) {  
+    deckEl.classList.remove("outline")
+    }
+
+      // Remove previous picked card from deck class list
+    if (deck.length > 1) {  
+    deckEl.classList.remove(cardToRemove)
+    }
+
+      // Set card to be removed on next click
+    cardToRemove = cardPicked  
+
+
+    deckEl.classList.add(cardPicked)  
+
+      // Adjust shadow when deck gets above/below halfway full
+    if (deck.length === 26) {  
+    deckEl.classList.add("shadow");
+    deckEl.classList.remove("shadow");
+    }
+
+
+    if (deck.length === 0) {  
+        deckEl.classList.add("outline");
+        deckEl.classList.remove("back-blue");
+    }
+}
 
 
 // function playGame() {
