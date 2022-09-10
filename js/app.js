@@ -3,7 +3,7 @@
 
 
 // ---------------------------- Variables (state) ----------------------
-//turn, board, winner, init war, round, points
+let board, winner, turn
 let deck = []
 let cardToRemove
 //remove top card
@@ -28,21 +28,27 @@ function init() {
     deck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
 }
 
-function getDeck()
-{
-	let deck = new Array();
+// function getDeck() {
 
-	for(let i = 0; i < suits.length; i++)
-	{
-		for(let x = 0; x < values.length; x++)
-		{
-			let card = {Value: values[x], Suit: suits[i]};
-			deck.push(card);
-		}
-	}
+// }
 
-	return deck;
-}
+// 	let deck = new Array();
+
+// 	for(let i = 0; i < suits.length; i++) {
+
+//     }
+	
+// 		for(let x = 0; x < values.length; x++) {
+
+//         }
+		
+// 			let card = {Value: values[x], Suit: suits[i]};
+// 			deck.push(card);
+		
+	
+
+// 	return deck;
+
     
 
 function render(cardPicked) {
@@ -111,24 +117,21 @@ function handleClick() {
 
 // }
 
-function shuffle(deck) 
-{
-    for (let i = 0; i < 1000; i++)
-	{
+function shuffle(deck) {
+
+}
+
+    for (let i = 0; i < 1000; i++) {
+
+    }
+	
 		let location1 = Math.floor((Math.random() * deck.length));
 		let location2 = Math.floor((Math.random() * deck.length));
 		let tmp = deck[location1];
 
 		deck[location1] = deck[location2];
 		deck[location2] = tmp;
-	}
-}
-   
-
-
-
-
-// take cards and shuffle them
+	// take cards and shuffle them
     // return shuffle cards 26 each for both players
 
 // }
