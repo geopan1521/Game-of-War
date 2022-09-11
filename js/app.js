@@ -6,11 +6,16 @@ let cardToRemove
 // Cached element references
 let deck1El = document.getElementById('deck-1')
 let deck2El = document.getElementById('deck-2')
+
 const messageEl = document.getElementById('message')
 console.log(messageEl)
 
+const reset = document.getElementById('reset-button')
+
 // Event listeners
 document.getElementById('btn').addEventListener('click', handleClick)
+
+reset.addEventListener("click", init)
 
 // Functions
 
