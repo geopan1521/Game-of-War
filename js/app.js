@@ -6,6 +6,8 @@ let cardToRemove
 // Cached element references
 let deck1El = document.getElementById('deck-1')
 let deck2El = document.getElementById('deck-2')
+const messageEl = document.getElementById('message')
+console.log(messageEl)
 
 // Event listeners
 document.getElementById('btn').addEventListener('click', handleClick)
@@ -62,14 +64,25 @@ function render(cardPicked) {
   }
   
 }
-	// take cards and shuffle them
+	
+    function shuffleCards(){
+
+    }
+
+    function getLoser(){
+        // if player || cpuPlayer = noCards
+    }
+
+
+
+// take cards and shuffle them
     // return shuffle cards 26 each for both players
 
 // }
 
 // 1. define the required variables used to track the state of the game
 // 2. store cached element references
-// 3. upon loading, the game state be initializaed and a function should be called to render this game state
+// 3. upon loading, the game state be initialized and a function should be called to render this game state
 // 4. The state of the game should be rendered to the user. write a render function
 // 5. defined the required constants. cards should have suit and rank. deck will be collection of cards. shuffle and dealt one at a time
 // 6. handle a player clicking a card with a handle click function
@@ -80,3 +93,4 @@ function render(cardPicked) {
 // 11. alternative keyboard function
 // 12. hand will also be collection of cards 
 // 13. write a If statement for tie then go to war
+// 14. create computer opponent
