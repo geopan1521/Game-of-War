@@ -4,7 +4,14 @@ let deck2 = []
 let deck3 = []
 let deck4 = []
 let cardToRemove1, cardToRemove4
-let higherCard
+let card
+let checkHandValue
+
+// const ['aD', 'aS', 'aH', 'aC'] = 14
+// const ['kD', 'kS', 'kH', 'kC'] = 13
+// const ['qD', 'qS', 'qH', 'qC'] = 12
+// const ['jD', 'jS', 'jH', 'jC'] = 11
+
 
 
 
@@ -102,10 +109,53 @@ function render(cardPicked1, cardPicked4) {
     }
 }
 
-function winningCard() {
-    let higherCard = winningCard
-    // if
+// dealerSum = checkHandValue(dealerCards)
+
+function checkCardValue(cards) {
+    // define a counter variable
+    let handTotal = 0
+
+    // loop through each of the cards in the deck
+    cards.forEach(card => {
+      // turn the card being passed in into a letter or number by chopping off the suit of the card
+    let cardString = card.slice(1, 3)
+    if (card === A, K, J, Q){
+        return A, K, J, Q
+    } 
+    if (!card === A, K, J, Q){
+        return
     }
+
+
+    
+      // if it is NOT, it must be a number, so parseInt
+      // add whatever value is determined to the total
+    if(cardString === "A") {
+        handTotal += 11
+    } else if (cardString === "K" || cardString === "J" ||cardString === "Q") {
+        handTotal += 10
+    } else {
+        handTotal += parseInt(cardString)
+    }
+    })
+    
+    // return the total value of the hand
+    return handTotal
+  }
+    // } if else {
+
+    // } if
+    
+    
+    
+    
+//     // this is where you'd need to
+//       // remove the beginning character of the string (the letter denoting which suit the card is)
+//       // Use the remaining value of the card (A, K, 8, etc...) to return a value
+// })
+// }
+
+
 
 	
     // // function shuffleReset(){
