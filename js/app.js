@@ -3,7 +3,8 @@ let deck1 = []
 let deck2 = []
 let deck3 = []
 let deck4 = []
-let cardToRemove
+let cardToRemove1, cardToRemove4
+let higherCard
 
 
 
@@ -37,7 +38,7 @@ init()
 // Initialize deck 1 with array of 52 cards 
 function init() {
     deck1 = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
-    deck2 = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
+    deck4 = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
     messageEl.textContent = 'Game of War'
     
 }
@@ -45,53 +46,66 @@ function init() {
 
 // Function to handle a button click:
 function handleClick() {
-
-
+    let cardPicked1, cardPicked4
     if (deck1.length > 0) {
-        console.log(deck1)
     let randIdx = Math.floor(Math.random() * deck1.length)
-        
-    let cardPicked = deck1.splice(randIdx, 1)[0]
-        
-    // deck2.push(cardPicked)
-    //     console.log(deck2)
-    render(cardPicked)
+    cardPicked1 = deck1.splice(randIdx, 1)[0]
+    deck2.push(cardPicked1)    
     }
-}
+    
+    if (deck4.length > 0) {
+    let randIdx = Math.floor(Math.random() * deck4.length)   
+    cardPicked4 = deck4.splice(randIdx, 1)[0]
+    deck3.push(cardPicked4)    
+    render(cardPicked1, cardPicked4)
+    }
+
+    }
 
 
 // Function to render deck state
-function render(cardPicked) {
-
-    // Removes outline class when first card is picked
+function render(cardPicked1, cardPicked4) {
+    if (deck2.length === 1) {  
+        deck2El.classList.remove("outline")
+    }
     if (deck3.length === 1) {  
         deck3El.classList.remove("outline")
     }
-      // Remove previous picked card from deck 2 class list
-    cardToRemove = cardPicked 
+    
+    if (deck2.length > 1) {  
+        deck2El.classList.remove(cardToRemove1)
+    }
+    
     if (deck3.length > 1) {  
-        deck3El.classList.remove(cardToRemove)
+        deck3El.classList.remove(cardToRemove4)
     }
     
+    cardToRemove1 = cardPicked1   
+    deck2El.classList.add(cardPicked1)
+        
+    if (deck2.length === 26) {  
+        deck2El.classList.add("shadow");
+        deck1El.classList.remove("shadow");
+    }
     
-    
-    // let cardToRemove = cardPicked
-      // Add current card picked to deck 2 array
-    deck3El.classList.add(cardPicked)  
+    cardToRemove4 = cardPicked4   
+    deck3El.classList.add(cardPicked4)
 
-      // Adjust shadow when deck gets above/below halfway full
     if (deck3.length === 26) {  
-    deck3El.classList.add("shadow");
-    deck3El.classList.remove("shadow");
+        deck3El.classList.add("shadow");
+        deck1El.classList.remove("shadow");
     }
 
-      // Remove card back color and adds outline when last card is picked
     if (deck1.length === 0) {  
-    deck1El.classList.add("outline");
-    deck1El.classList.remove("back-blue");
+        deck1El.classList.add("outline");
+        deck1El.classList.remove("back-blue");
     }
 }
 
+function winningCard() {
+    let higherCard = winningCard
+    // if
+    }
 
 	
     // // function shuffleReset(){
@@ -107,13 +121,13 @@ function render(cardPicked) {
             
     // }
         
-    function dealCards() {
-        array.forEach(deck1, deck2 => {
+    // function dealCards() {
+    //     array.forEach(deck1, deck2 => {
 
             
-        });
+    //     });
 
-    }
+    // }
     
     
     
