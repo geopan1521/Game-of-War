@@ -1,7 +1,11 @@
 // Declare deck variables
 let deck1 = []
 let deck2 = []
+let deck3 = []
+let deck4 = []
 let cardToRemove
+
+
 
 
 
@@ -9,16 +13,21 @@ let cardToRemove
 // Cached element references
 let deck1El = document.getElementById('deck-1')
 let deck2El = document.getElementById('deck-2')
+let deck3El = document.getElementById('deck-3')
+let deck4El = document.getElementById('deck-4')
 
 const messageEl = document.getElementById('message')
 console.log(messageEl)
 
-const reset = document.getElementById('reset-button')
+// const reset = document.getElementById('reset-button')
 
 // Event listeners
-document.getElementById('btn').addEventListener('click', handleClick)
 
-reset.addEventListener("click", shuffleReset)
+document.getElementById('btn').addEventListener('click', handleClick)
+// document.getElementById('deal').addEventListener('click', handleClick)
+
+// reset.addEventListener("click", shuffleReset)
+// deal.addEventListener("click", dealCards)
 
 // Functions
 
@@ -33,12 +42,19 @@ function init() {
     
 }
 
+
 // Function to handle a button click:
 function handleClick() {
+
+
     if (deck1.length > 0) {
+        console.log(deck1)
     let randIdx = Math.floor(Math.random() * deck1.length)
+        
     let cardPicked = deck1.splice(randIdx, 1)[0]
-    deck2.push(cardPicked)
+        
+    // deck2.push(cardPicked)
+    //     console.log(deck2)
     render(cardPicked)
     }
 }
@@ -46,49 +62,57 @@ function handleClick() {
 
 // Function to render deck state
 function render(cardPicked) {
-    console.log(cardPicked)
-    if (deck2.length === 1) {
-    deck2El.classList.remove('outline')
-}
+
+    // Removes outline class when first card is picked
+    if (deck3.length === 1) {  
+        deck3El.classList.remove("outline")
+    }
+      // Remove previous picked card from deck 2 class list
+    cardToRemove = cardPicked 
+    if (deck3.length > 1) {  
+        deck3El.classList.remove(cardToRemove)
+    }
     
-    if (deck2.length > 1) {
-    deck2El.classList.remove(cardToRemove)
+    
+    
+    // let cardToRemove = cardPicked
+      // Add current card picked to deck 2 array
+    deck3El.classList.add(cardPicked)  
+
+      // Adjust shadow when deck gets above/below halfway full
+    if (deck3.length === 26) {  
+    deck3El.classList.add("shadow");
+    deck3El.classList.remove("shadow");
+    }
+
+      // Remove card back color and adds outline when last card is picked
+    if (deck1.length === 0) {  
+    deck1El.classList.add("outline");
+    deck1El.classList.remove("back-blue");
+    }
 }
 
-    cardToRemove = cardPicked
-    deck2El.classList.add(cardPicked)
-    if (deck2.length === 26) {
-    deck2El.classList.add('shadow')
-    deck1El.classList.remove('shadow')
-}
 
-    if (deck1.length === 0) {
-    deck1El.classList.add('outline')
-    deck1El.classList.remove('back-blue')
-}
-
-}
 	
-    function shuffleReset(){
-        deck1.sort((a, b)=>{
-                if (Math.random()> 0.5){    
-                    return -1 
-                } else {
-                    return 1   
-                }
-            })
-            console.log(deck1)
+    // // function shuffleReset(){
+    // //     deck1.sort((a, b)=>{
+    // //             if (Math.random()> 0.5){    
+    // //                 return -1 
+    // //             } else {
+    // //                 return 1   
+    // //             }
+    // //         })
+    // //         console.log(deck1)
                 
             
-    }
+    // }
         
     function dealCards() {
-        const dealCards = () => {
-            for (let i = 0; i < playerHands.length; i++) {
-                let card = card.pop()
-                playerHands[i].hand.push(card)
-            }
-        }
+        array.forEach(deck1, deck2 => {
+
+            
+        });
+
     }
     
     
