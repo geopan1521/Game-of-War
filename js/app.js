@@ -6,11 +6,7 @@ let deck4 = []
 let cardToRemove1, cardToRemove4
 let card
 let checkHandValue
-
-// const ['aD', 'aS', 'aH', 'aC'] = 14
-// const ['kD', 'kS', 'kH', 'kC'] = 13
-// const ['qD', 'qS', 'qH', 'qC'] = 12
-// const ['jD', 'jS', 'jH', 'jC'] = 11
+let cardPicked1, cardPicked4
 
 
 
@@ -53,7 +49,6 @@ function init() {
 
 // Function to handle a button click:
 function handleClick() {
-    let cardPicked1, cardPicked4
     if (deck1.length > 0) {
     let randIdx = Math.floor(Math.random() * deck1.length)
     cardPicked1 = deck1.splice(randIdx, 1)[0]
@@ -66,7 +61,7 @@ function handleClick() {
     deck3.push(cardPicked4)    
     render(cardPicked1, cardPicked4)
     }
-
+    checkCardValue()
     }
 
 
@@ -100,44 +95,108 @@ function render(cardPicked1, cardPicked4) {
 
     if (deck3.length === 26) {  
         deck3El.classList.add("shadow");
-        deck1El.classList.remove("shadow");
+        deck4El.classList.remove("shadow");
     }
 
     if (deck1.length === 0) {  
         deck1El.classList.add("outline");
         deck1El.classList.remove("back-blue");
     }
+    if (deck4.length === 0) {  
+        deck4El.classList.add("outline");
+        deck4El.classList.remove("back-blue");
+    }
 }
 
 // dealerSum = checkHandValue(dealerCards)
 
 function checkCardValue(cards) {
-    // define a counter variable
+    // let firstCard = deck3El.classList[2]
+    let secondCard = cardPicked4.slice(1)
+    let firstCard = cardPicked1.slice(1)
+    
+    if (firstCard === 'A'){
+        firstCard = 14
+    }
+    if (firstCard === 'K'){
+        firstCard = 13
+    }
+    if (firstCard === 'Q'){
+        firstCard = 12
+    }
+    if (firstCard === 'J'){
+        firstCard = 11
+    }
+ 
+    if (secondCard === 'A'){
+        secondCard = 14
+    }
+
+    if (secondCard === 'K'){
+        secondCard = 13
+    }
+    if (secondCard === 'Q'){
+        secondCard = 12
+    }
+    if (secondCard === 'J'){
+        secondCard = 11
+    }
+    
+    firstCard = parseInt(firstCard)
+    secondCard = parseInt(secondCard)
+    // console.log(firstCard)
+    // console.log(secondCard)
+    //            DO NOT TOUCH ABOVE CODE!!!!!!!!!!!!!!!!!!!!!!!!
+    //*************************************************************************************** */
+    
+    let winningCard
+    if (firstCard > secondCard) {
+        winningCard = firstCard
+    } else if(secondCard > firstCard) {
+        winningCard = secondCard
+    } else {(firstCard === secondCard) 
+        
+        //each player need to push 3 cards then last one is displayed
+        // the card that is displayed is compared and tells who won
+        //say who won 
+        
+    } 
+    
+
+    if (firstCard > secondCard) {
+        deck1.push(cardPicked1, cardPicked4)
+    } else if(secondCard > firstCard){ 
+        deck4.push(cardPicked1, cardPicked4) 
+    } else { 
+        //give the player who won war the 10 cards they played added to their deck
+    } 
+    
+    console.log(cardPicked1)
+    console.log(cardPicked4)
+    
+    // cards.forEach(card =>{
+    // let cardString = card.slice(1, 3)
+    // })
+    
+    //if statement that declares if deck3El is greater than deck4El then move to winners hand
+    
+
     let handTotal = 0
 
-    // loop through each of the cards in the deck
-    cards.forEach(card => {
-      // turn the card being passed in into a letter or number by chopping off the suit of the card
-    let cardString = card.slice(1, 3)
-    if (card === A, K, J, Q){
-        return A, K, J, Q
-    } 
-    if (!card === A, K, J, Q){
-        return
-    }
+    
 
 
     
       // if it is NOT, it must be a number, so parseInt
       // add whatever value is determined to the total
-    if(cardString === "A") {
-        handTotal += 11
-    } else if (cardString === "K" || cardString === "J" ||cardString === "Q") {
-        handTotal += 10
-    } else {
-        handTotal += parseInt(cardString)
-    }
-    })
+    // if(cardString === "A") {
+    //     handTotal += 11
+    // } else if (cardString === "K" || cardString === "J" ||cardString === "Q") {
+    //     handTotal += 10
+    // } else {
+    //     handTotal += parseInt(cardString)
+    // }
+    // })
     
     // return the total value of the hand
     return handTotal
