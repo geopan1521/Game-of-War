@@ -159,12 +159,17 @@ function checkCardValue(cards) {
 
     if (firstCard === secondCard) {
         return 'tie'
+
     }
-    for (let i = 1; i <= 8; i++)    
-        warCards.push(deck1[0], deck1[1], deck1[2])
-        deck1.splice(0, 3)
-        deck4.splice(0, 3)
-        warCards.classList.add('back')
+    for (let i = 1; i <= 8; i++) {
+        
+    }
+        
+    //if firstcard is winner push all warcards to deck1
+    
+        // deck1.splice(0, 3)
+        // deck4.splice(0, 3)
+        // warCards.classList.add('back')
         
 
         console.log(warCards)
