@@ -150,38 +150,64 @@ function checkCardValue(cards) {
     //*************************************************************************************** */
     
     let winningCard
+    let warCards = []
     if (firstCard > secondCard) {
         winningCard = firstCard
     } else if(secondCard > firstCard) {
         winningCard = secondCard
-    } else {(firstCard === secondCard) 
+    } else {
+
+    if (firstCard === secondCard) {
+        return 'tie'
+    }
+    for (let i = 1; i <= 8; i++)    
+        warCards.push(deck1[0], deck1[1], deck1[2])
+        deck1.splice(0, 3)
+        deck4.splice(0, 3)
+        warCards.classList.add('back')
+        
+
+        console.log(warCards)
+        console.log(deck1)
+        console.log(deck4)
+        
+    }
+    
+    
+        //grab 4 cards from each players deck
+        //grab one card and compare the two
+    }   //the winner will have the ten cards put in their deck
+        
+
+        console.log(deck1)
+        console.log(deck4)
         
         //each player need to push 3 cards then last one is displayed
         // the card that is displayed is compared and tells who won
         //say who won 
         
-    } 
+    
     
 
-    if (firstCard > secondCard) {
-        deck1.push(cardPicked1, cardPicked4)
-    } else if(secondCard > firstCard){ 
-        deck4.push(cardPicked1, cardPicked4) 
-    } else { 
-        //give the player who won war the 10 cards they played added to their deck
-    } 
+    // if (firstCard > secondCard) {
+    //     deck1.push(cardPicked1, cardPicked4)
+    // } else if(secondCard > firstCard){ 
+    //     deck4.push(cardPicked1, cardPicked4) 
+    // } else { 
+    //     //give the player who won war the 10 cards they played added to their deck
+    // } 
     
-    console.log(cardPicked1)
-    console.log(cardPicked4)
+    // console.log(cardPicked1)
+    // console.log(cardPicked4)
     
-    // cards.forEach(card =>{
-    // let cardString = card.slice(1, 3)
-    // })
+    // // cards.forEach(card =>{
+    // // let cardString = card.slice(1, 3)
+    // // })
     
-    //if statement that declares if deck3El is greater than deck4El then move to winners hand
+    // //if statement that declares if deck3El is greater than deck4El then move to winners hand
     
 
-    let handTotal = 0
+    // let handTotal = 0
 
     
 
@@ -199,8 +225,8 @@ function checkCardValue(cards) {
     // })
     
     // return the total value of the hand
-    return handTotal
-  }
+//     return handTotal
+//   }
     // } if else {
 
     // } if
