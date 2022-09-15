@@ -11,6 +11,8 @@ How to play: Press draw to play cards.
 
 Link to game: https://gbsgameofwar.netlify.app/
 
+Wireframing: https://whimsical.com/WUAk7Eo3wmXWBSBnwwwiKp#
+
 Technologies used: Javascript, CSS, HTML
 
 Next steps: add infinity mode.
