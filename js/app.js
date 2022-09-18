@@ -7,6 +7,7 @@ let cardToRemove1, cardToRemove4
 let card
 let checkHandValue
 let cardPicked1, cardPicked4
+// let Player1, Player2
 
 
 
@@ -52,13 +53,16 @@ function handleClick() {
     if (deck1.length > 0) {
     let randIdx = Math.floor(Math.random() * deck1.length)
     cardPicked1 = deck1.splice(randIdx, 1)[0]
-    deck2.push(cardPicked1)    
+    deck2.push(cardPicked1) 
+    // deck1.splice(randIdx, 1)
+    
     }
     
     if (deck4.length > 0) {
     let randIdx = Math.floor(Math.random() * deck4.length)   
     cardPicked4 = deck4.splice(randIdx, 1)[0]
-    deck3.push(cardPicked4)    
+    deck3.push(cardPicked4)   
+    
     render(cardPicked1, cardPicked4)
     }
     checkCardValue()
@@ -106,15 +110,11 @@ function render(cardPicked1, cardPicked4) {
         deck4El.classList.add("outline");
         deck4El.classList.remove("back-blue");
     }
-}
-
-// dealerSum = checkHandValue(dealerCards)
+    }
 
 function checkCardValue(cards) {
-    // let firstCard = deck3El.classList[2]
     let secondCard = cardPicked4.slice(1)
     let firstCard = cardPicked1.slice(1)
-    
     if (firstCard === 'A'){
         firstCard = 14
     }
@@ -127,7 +127,7 @@ function checkCardValue(cards) {
     if (firstCard === 'J'){
         firstCard = 11
     }
- 
+
     if (secondCard === 'A'){
         secondCard = 14
     }
@@ -148,22 +148,73 @@ function checkCardValue(cards) {
     // console.log(secondCard)
     //            DO NOT TOUCH ABOVE CODE!!!!!!!!!!!!!!!!!!!!!!!!
     //*************************************************************************************** */
-    
+    // deck1 && deck4 forEach comparision? then pop winning cards into winning deck
     let winningCard
-    let warCards = []
-    if (firstCard > secondCard) {
-        winningCard = firstCard
-    } else if(secondCard > firstCard) {
-        winningCard = secondCard
+    // let warCards = []
+    // forEach  first card and second card
+    if (cardPicked1 > cardPicked4) {
+        winningCard = cardPicked1
+    } else if(cardPicked4 > cardPicked1) {
+        winningCard = cardPicked4
     } else {
-
-    if (firstCard === secondCard) {
-        return 'tie'
-
     }
-    for (let i = 1; i <= 8; i++) {
+    
+    if (cardPicked1 === winningCard) {
+        deck1.splice(1, 0, cardPicked1, cardPicked4)
+        //everytime first card wins put first card and second card in deck1
+        console.log(deck1.length)
+    } else if(cardPicked4 === winningCard) {
+        deck4.splice(1, 0, cardPicked1, cardPicked4)
+        console.log(deck4.length)
+    }
+    }
+    //for each winning card i want to push 2 cards into the deck in which the winning card came from
+    
+    
+    
+    
+    // for (let i = 0; i < 8; i++) {
+        // let warCards = deck1.pop()
+    // }
+    // }
+
+    // let warCards = deck1
+    // if (firstCard === winningCard){
+    //     deck1.push(firstCard, secondCard)
         
+    // } else {
+    //     (secondCard === winningCard)
+    //     deck4.push(firstCard, secondCard)
+        
+    // }
+    
+    
+    
+
+    function getWinner(deck1, deck4) {
+    if (deck1.length === 0) {
+        messageEl.textContent = `Player ${winner === deck4 ? 'Player 2' : 'Player1' } wins`
+        confetti.start(2000)
+    } else {
+        (deck4.length === 0)
+        messageEl.textContent = `Player ${winner === deck1 ? 'Player 1' : 'Player 2'} wins`
+        confetti.start(2000)
+        getWinner()
+        render()
     }
+    }
+    //find a way to output the count of each players deck
+    //add a message to say what player won the hand
+    //a message for when somebody gets to zero cards
+    
+    
+    // console.log(deck4)
+    // console.log('deck1', deck1.length, 'deck2', deck4.length)
+    
+    
+    // for (let i = 1; i <= 8; i++) {
+        
+    // }
         
     //if firstcard is winner push all warcards to deck1
     
@@ -172,20 +223,18 @@ function checkCardValue(cards) {
         // warCards.classList.add('back')
         
 
-        console.log(warCards)
-        console.log(deck1)
-        console.log(deck4)
+        // console.log(warCards)
         
-    }
+        
+    
     
     
         //grab 4 cards from each players deck
         //grab one card and compare the two
-    }   //the winner will have the ten cards put in their deck
+       //the winner will have the ten cards put in their deck
         
 
-        console.log(deck1)
-        console.log(deck4)
+        
         
         //each player need to push 3 cards then last one is displayed
         // the card that is displayed is compared and tells who won
@@ -215,9 +264,6 @@ function checkCardValue(cards) {
     // let handTotal = 0
 
     
-
-
-    
       // if it is NOT, it must be a number, so parseInt
       // add whatever value is determined to the total
     // if(cardString === "A") {
@@ -239,11 +285,7 @@ function checkCardValue(cards) {
     
     
     
-//     // this is where you'd need to
-//       // remove the beginning character of the string (the letter denoting which suit the card is)
-//       // Use the remaining value of the card (A, K, 8, etc...) to return a value
-// })
-// }
+
 
 
 
