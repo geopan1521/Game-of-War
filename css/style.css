@@ -26,6 +26,14 @@ body {
     box-shadow: 7px 7px 7px 0 rgba(41, 41, 41, 0.95) !important;
   }
   
+  .card.win {
+    border: 1px solid green;
+  }
+
+  .card.lose {
+    border: 1px solid red;
+  }
+
   .btn {
     margin-top: 2vh;
     color: white;
